@@ -1,0 +1,49 @@
+launch:
+- arg:
+    name: device
+    default: "/dev/cameras/ros/rear"
+
+- node_container:
+    pkg: rclcpp_components
+    exec: component_container
+    name: apriltag_container
+    namespace: ""
+    composable_node:
+    - pkg: v4l2_camera
+      plugin: v4l2_camera::V4L2Camera
+      name: elp_back_base_camera_frame
+      namespace: elp_back_base
+      param:
+      - name: video_device
+        value: $(var device)
+      - name: camera_frame_id
+        value: elp_back_base_camera_frame
+      extra_arg:
+      - name: use_intra_process_comms
+        value: "True"
+
+    - pkg: image_proc
+      plugin: image_proc::RectifyNode
+      name: rectify
+      namespace: elp_back_base
+      remap:
+      - from: image
+        to: image_raw
+      extra_arg:
+      - name: use_intra_process_comms
+        value: "True"
+
+    - pkg: apriltag_ros
+      plugin: AprilTagNode
+      name: apriltag
+      namespace: apriltag
+      remap:
+      - from: /apriltag/image_rect
+        to: /elp_back_base/image_rect
+      - from: /apriltag/camera_info
+        to: /elp_back_base/camera_info
+      param:
+      - from: $(find-pkg-share apriltag_ros)/cfg/dexory_tags_36h11.yaml
+      extra_arg:
+      - name: use_intra_process_comms
+        value: "True"
