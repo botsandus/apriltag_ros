@@ -1,9 +1,6 @@
 launch:
-- arg:
-    name: device
-    default: "/dev/cameras/ros/rear"
-    name: tag_format
-    default: "mim"
+- arg: { name: device, default: "/dev/cameras/ros/rear"}
+- arg: { name: tag_format, default: "mim"}
 
 - node_container:
     pkg: rclcpp_components
