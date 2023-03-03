@@ -18,9 +18,7 @@ def generate_launch_description():
     detector_launch_file = "/launch/elp_36h11.launch.yml"
     sim_detector_launch_file = "/launch/gazebo_elp_36h11.launch.yml"
 
-    tag_format = "mim"
-    if getenv('USE_BIG_APRIL_TAGS') == 'true':
-        tag_format = "arri"
+    tag_format = "arri"
 
     # Define LaunchDescription variable
     ld = LaunchDescription(ARGUMENTS)
