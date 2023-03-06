@@ -1,0 +1,26 @@
+image_width: 640
+image_height: 480
+camera_name: camera_rear_ros
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [359.87898,   0.     , 326.52872,
+           0.     , 357.87451, 206.17533,
+           0.     ,   0.     ,   1.     ]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.307032, 0.071869, 0.004066, -0.001025, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [254.36867,   0.     , 323.54638,   0.     ,
+           0.     , 293.15536, 193.78615,   0.     ,
+           0.     ,   0.     ,   1.     ,   0.     ]

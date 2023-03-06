@@ -1,7 +1,6 @@
 launch:
-- arg:
-    name: device
-    default: "/dev/cameras/ros/rear"
+- arg: { name: device, default: "/dev/cameras/ros/rear"}
+- arg: { name: tag_format, default: "arri"}
 
 - node_container:
     pkg: rclcpp_components
@@ -18,6 +17,8 @@ launch:
         value: $(var device)
       - name: camera_frame_id
         value: elp_back_base_camera_frame
+      - name: camera_info_url
+        value: $(find-pkg-share apriltag_ros)/cfg/elp_generic_calibration.yaml
       extra_arg:
       - name: use_intra_process_comms
         value: "True"
@@ -43,7 +44,7 @@ launch:
       - from: /apriltag/camera_info
         to: /elp_back_base/camera_info
       param:
-      - from: $(find-pkg-share apriltag_ros)/cfg/dexory_tags_36h11.yaml
+      - from: $(find-pkg-share apriltag_ros)/cfg/dexory_$(var tag_format)_tags_36h11.yaml
       extra_arg:
       - name: use_intra_process_comms
         value: "True"

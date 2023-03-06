@@ -1,0 +1,26 @@
+/**:
+    ros__parameters:
+        image_transport: raw    # image format
+        family: 36h11           # tag family name
+        size: 0.075             # tag edge size in meter
+        max_hamming: 0          # maximum allowed hamming distance (corrected bits)
+
+        # see "apriltag.h" 'struct apriltag_detector' for more documentation on these optional parameters
+        detector:
+            threads: 2          # number of threads
+            decimate: 1.0       # decimate resolution for quad detection
+            blur: 0.0           # sigma of Gaussian blur for quad detection
+            refine: 1           # snap to strong gradients
+            debug: 0            # write additional debugging images to current working directory
+        tag:
+          ids:    [0, 1, 2, 3]         # tag IDs for which to publish transform
+          frames: [tm_0, tm_1, tm_2, tm_3]   # frame names
+          sizes:  [0.077, 0.031, 0.077, 0.031]     # tag-specific edge size, overrides the default 'size'
+        bundle:
+          name: dock_bundle
+          ids: [0, 1, 2, 3]
+          layout: # {X_POS, Y_POS, Z_POS, QUAT_W_VAL, QUAT_X_VAL, QUAT_Y_VAL, QUAT_Z_VAL}
+            tag_0: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+            tag_1: [0.063, 0.019, 0.0, 1.0, 0.0, 0.0, 0.0]
+            tag_2: [0.174, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+            tag_3: [0.111, 0.019, 0.0, 1.0, 0.0, 0.0, 0.0]
