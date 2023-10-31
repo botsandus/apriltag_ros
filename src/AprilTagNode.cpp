@@ -8,7 +8,7 @@
 #endif
 #include "common/homography.h"// from apriltag lib
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
-#include <image_geometry/pinhole_camera_model.h>
+#include <image_geometry/pinhole_camera_model.hpp>
 #include <image_transport/camera_subscriber.hpp>
 #include <image_transport/image_transport.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
